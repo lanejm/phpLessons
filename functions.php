@@ -13,13 +13,13 @@ displaytxt();
 echo "<hr />";
 
 //FUNCTION ARGUMENTS
-function myCar($car) {
-    echo "$car<br>";
+function myCar($car, $color) {
+    echo "$car, $color<br>";
 }
 
-myCar("Volvo");
-myCar("BMW");
-myCar("Honda");
+myCar("Volvo", "blue");
+myCar("BMW", "red");
+myCar("Honda", "green");
 
 ?>
 
