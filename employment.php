@@ -5,7 +5,6 @@
 	<head>
 		<title>PHP Form</title>
 		<meta charset="utf-8">	
-
 		<style>
 		.error {
 			color: red;
@@ -16,17 +15,25 @@
 
 <body>
 
-<?php 
+<?php
+// define variables and set to empty values
 $name = $website = $positon = $experience = $estatus = $comments = " ";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $name = val($_POST["name"]);
-  $website = val($_POST["website"]);
-  $position = val($_POST["position"]);
-  $experience = val($_POST["experience"]);
-  $estatus = val($_POST["estatus"]);
-  $comments = val($_POST["comments"]);
-}
+
+  if (empty($_POST["name"])) {
+    echo "<span class=\"error\">Error: First name required</span>";
+    } elseif (empty($_POST["website"])) {
+      echo "<strong>ERROR: Website is required</strong>";
+    }else {
+      $name = val($_POST["name"]);
+      $website = val($_POST["website"]);
+      $position = val($_POST["position"]);
+      $experience = val($_POST["experience"]);
+      $estatus = val($_POST["estatus"]);
+      $comments = val($_POST["comments"]);
+    }
+ }
 
 function val($data) {
   $data = trim($data);
