@@ -16,7 +16,28 @@
 
 <body>
 
-<form name="employment" action="" method="post"> 
+<?php 
+$name = $website = $positon = $experience = $estatus = $comments = " ";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = val($_POST["name"]);
+  $website = val($_POST["website"]);
+  $position = val($_POST["position"]);
+  $experience = val($_POST["experience"]);
+  $estatus = val($_POST["estatus"]);
+  $comments = val($_POST["comments"]);
+}
+
+function val($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+?>
+
+<form name="employment" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> 
  <table width="600" border="0" cellspacing="1" cellpadding="1">
     <tr>
       <td><h2>Employment Application</h2></td>
@@ -89,6 +110,20 @@
     </tr>
   </table>
 </form>
-
+<?php
+echo "<h2>User Input:</h2>";
+echo "Name: " . $name;
+echo "<br>";
+echo "Website: " . $website;
+echo "<br>";
+echo "Position: " . $position;
+echo "<br>";
+echo "Experience: " . $experience;
+echo "<br>";
+echo "Employment Status: " . $estatus;
+echo "<br>";
+echo "Comments: " . $comments;
+echo "<br>";
+?>
 </body>
 </html>
